@@ -1,5 +1,7 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using System.Web.Mvc;
+using WatchShop.Infrastructure;
 
 [assembly: OwinStartupAttribute(typeof(WatchShop.Startup))]
 namespace WatchShop
@@ -9,7 +11,7 @@ namespace WatchShop
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            
+            DependencyResolver.SetResolver(new ShopDependencyResolver());
         }
     }
 }
