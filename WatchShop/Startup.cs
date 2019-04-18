@@ -11,7 +11,6 @@ namespace WatchShop
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            DependencyResolver.SetResolver(new ShopDependencyResolver());
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using Ninject;
+﻿using BLL.Models;
+using BLL.Modules;
+using BLL.Services;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +15,7 @@ namespace WatchShop.Infrastructure
         IKernel kernel;
         public ShopDependencyResolver()
         {
-            kernel = new StandardKernel();
+            kernel = new StandardKernel(new ShopDIModule());
         }
         public object GetService(Type serviceType)
         {
@@ -23,5 +26,7 @@ namespace WatchShop.Infrastructure
         {
             return kernel.GetAll(serviceType);
         }
+
+
     }
 }

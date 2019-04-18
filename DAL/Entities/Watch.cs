@@ -17,10 +17,6 @@ namespace DAL
 
         public int? price { get; set; }
 
-        [Required]
-        [StringLength(255)]
-        public string descript_path { get; set; }
-
         [StringLength(255)]
         public string folder_img { get; set; }
 
@@ -37,6 +33,8 @@ namespace DAL
         public int? material_id { get; set; }
 
         public int country_id { get; set; }
+
+        public string descript { get; set; }
 
         public virtual Country Country { get; set; }
 

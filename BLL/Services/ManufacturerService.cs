@@ -1,4 +1,6 @@
-﻿using BLL.Models;
+﻿using AutoMapper;
+using BLL.Models;
+using DAL;
 using DAL.Repositories;
 using System;
 using System.Collections.Generic;
@@ -8,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace BLL.Services
 {
-    class ManufacturerService : IService<ManufacturerDTO>
+    public class ManufacturerService : IService<ManufacturerDTO>
     {
-        IRepository<ManufacturerDTO> repo;
-        public ManufacturerService(IRepository<ManufacturerDTO> repo)
+        IRepository<Manufacturer> repo;
+        public ManufacturerService(IRepository<Manufacturer> repo)
         {
             this.repo = repo;
         }
@@ -20,15 +22,22 @@ namespace BLL.Services
             throw new NotImplementedException();
         }
 
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Edit(ManufacturerDTO item)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<ManufacturerDTO> GetAll()
         {
-            return repo
-                  .GetAll()
-                    .Select(x => new ManufacturerDTO
-                    {
-                        Id = x.Id,
-                        Name = x.Name
-                    });
+       
+            Mapper.Initialize(cfg => cfg.CreateMap<Manufacturer, ManufacturerDTO>());
+            var manufacturers = Mapper.Map<IEnumerable<Manufacturer>, IEnumerable<ManufacturerDTO>>(repo.GetAll());
+            return manufacturers;
         }
     }
 }

@@ -40,7 +40,7 @@ namespace DAL.Repositories
 
         public void Update(Watch item)
         {
-            context.Entry(item).State = System.Data.Entity.EntityState.Modified
+            context.Entry(item).State = System.Data.Entity.EntityState.Modified;
         }
     }
 }
