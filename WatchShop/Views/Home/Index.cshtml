@@ -5,11 +5,12 @@
 <div>
     <table>
         <thead>
-        <th>Manufacturer</th>
-        <th>Country</th>
+        @*<th>Manufacturer</th>
+        <th>Country</th>*@
+            <th>Watch</th>
         </thead>
         <tbody>
-            <tr>
+            @*<tr>
                 @foreach (var manuf in ViewBag.ManufList)
                 {
                     <td>@manuf.Name</td>
@@ -19,6 +20,13 @@
                 @foreach (var country in ViewBag.Countries)
                 {
                     <td>@country.Name</td>
+                }
+            </tr>*@
+            <tr>
+                @foreach (var watch in ViewBag.Watch)
+                {
+                    <td>@watch.Model</td>
+                    <td>@watch.Manufacturer</td>
                 }
             </tr>
         </tbody>

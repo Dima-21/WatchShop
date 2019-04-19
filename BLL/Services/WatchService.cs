@@ -1,4 +1,5 @@
-﻿using BLL.Models;
+﻿using AutoMapper;
+using BLL.Models;
 using DAL;
 using DAL.Repositories;
 using System;
@@ -33,7 +34,8 @@ namespace BLL.Services
 
         public IEnumerable<WatchDTO> GetAll()
         {
-            throw new NotImplementedException();
+            var watch = Mapper.Map<IEnumerable<Watch>, IEnumerable<WatchDTO>>(repo.GetAll());
+            return watch;
         }
     }
 }

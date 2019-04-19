@@ -34,8 +34,6 @@ namespace BLL.Services
 
         public IEnumerable<ManufacturerDTO> GetAll()
         {
-       
-            Mapper.Initialize(cfg => cfg.CreateMap<Manufacturer, ManufacturerDTO>());
             var manufacturers = Mapper.Map<IEnumerable<Manufacturer>, IEnumerable<ManufacturerDTO>>(repo.GetAll());
             return manufacturers;
         }

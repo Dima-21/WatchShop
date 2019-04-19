@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +19,7 @@ namespace WatchShop
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             DependencyResolver.SetResolver(new ShopDependencyResolver());
+            AutoMapperConfig.RegisterMappings();
         }
     }
 }

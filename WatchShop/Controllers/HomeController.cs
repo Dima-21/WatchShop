@@ -12,15 +12,18 @@ namespace WatchShop.Controllers
     {
         IService<ManufacturerDTO> manufactService;
         IService<CountryDTO> countryService;
-        public HomeController(IService<ManufacturerDTO> manufactService, IService<CountryDTO> countryService)
+        IService<WatchDTO> watchService;
+        public HomeController(IService<ManufacturerDTO> manufactService, IService<CountryDTO> countryService, IService<WatchDTO> watchService)
         {
             this.manufactService = manufactService;
             this.countryService = countryService;
+            this.watchService = watchService;
         }
         public ActionResult Index()
         {
             ViewBag.ManufList =  manufactService.GetAll().ToList();
             ViewBag.Countries = countryService.GetAll().ToList();
+            ViewBag.Watch = watchService.GetAll().ToList();
             return View();
         }
 
