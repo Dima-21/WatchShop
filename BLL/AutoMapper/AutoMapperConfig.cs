@@ -17,8 +17,17 @@ namespace BLL.AutoMapper
             {
                 cfg.CreateMap<Manufacturer, ManufacturerDTO>();
                 cfg.CreateMap<Country, CountryDTO>();
+                cfg.CreateMap<Glass, GlassDTO>();
+                cfg.CreateMap<Wtype, WTypeDTO>();
+                cfg.CreateMap<Material, MaterialDTO>();
+                cfg.CreateMap<Style, StyleDTO>();
                 cfg.CreateMap<Watch, WatchDTO>()
-                    .ForMember("Model", opt => opt.MapFrom(x => x.model))
+                    .ForMember("Description", opt => opt.MapFrom(x => x.descript))
+                    .ForMember("Country", opt => opt.MapFrom(x => x.Country.name))
+                    .ForMember("Glass", opt => opt.MapFrom(x => x.Glass.name))
+                    .ForMember("WType", opt => opt.MapFrom(x => x.Wtype.name))
+                    .ForMember("Material", opt => opt.MapFrom(x => x.Material.name))
+                    .ForMember("Style", opt => opt.MapFrom(x => x.Style.name))
                     .ForMember("Manufacturer", opt => opt.MapFrom(x => x.Manufacturer.name));
             });
         }

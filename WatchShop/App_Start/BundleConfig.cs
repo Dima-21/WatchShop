@@ -23,8 +23,17 @@ namespace WatchShop
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            // Materialize
+
+            bundles.Add(new StyleBundle("~/Content/materialize/css").Include(
+             "~/Content/materialize/css/materialize.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/materialize").Include(
+                      "~/Scripts/materialize/materialize.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/js").Include(
+                     "~/Scripts/JavaScript.js"));
         }
     }
 }

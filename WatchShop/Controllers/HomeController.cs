@@ -5,28 +5,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WatchShop.Models;
 
 namespace WatchShop.Controllers
 {
     public class HomeController : Controller            
     {
-        IService<ManufacturerDTO> manufactService;
-        IService<CountryDTO> countryService;
         IService<WatchDTO> watchService;
-        public HomeController(IService<ManufacturerDTO> manufactService, IService<CountryDTO> countryService, IService<WatchDTO> watchService)
+        public HomeController(IService<WatchDTO> watchService)
         {
-            this.manufactService = manufactService;
-            this.countryService = countryService;
             this.watchService = watchService;
         }
         public ActionResult Index()
         {
-            ViewBag.ManufList =  manufactService.GetAll().ToList();
-            ViewBag.Countries = countryService.GetAll().ToList();
             ViewBag.Watch = watchService.GetAll().ToList();
             return View();
         }
 
-  
+        [HttpPost]
+        public ActionResult AddGood(AddGoodViewModel addGoodVM)
+        {
+
+            return View();
+        }
+
+
     }
 }

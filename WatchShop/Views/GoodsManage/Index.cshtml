@@ -1,0 +1,56 @@
+﻿@model BLL.Services.WatchService
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+   
+    <h4>Управление товарами</h4>
+    <hr />
+    <a class="waves-effect waves-light btn" href="@Url.Action("Create")"><i class="material-icons right">add</i>Добавить товар</a>
+    <table class="centered">
+        <thead>
+            <tr>
+                <th>Фото</th>
+                <th>Производитель</th>
+                <th>Модель</th>
+                <th>Цена</th>
+                <th>Стиль</th>
+                <th>Страна производства</th>
+                <th>Механизм</th>
+                <th>Стекло</th>
+                <th>Материал</th>
+                <th>Вес, г</th>
+                <th></th><th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var watch in Model.GetAll())
+            {
+                <tr>
+                    <td><img src='@watch.Img' width="50px" /></td>
+                    <td>@watch.Manufacturer</td>
+                    <td>@watch.Model</td>
+                    <td>@watch.Price</td>
+                    <td>@watch.Style</td>
+                    <td>@watch.Country</td>
+                    <td>@watch.WType</td>
+                    <td>@watch.Glass</td>
+                    <td>@watch.Material</td>
+                    <td>@watch.Weight</td>
+                    <td>
+                        <a class="btn-manage btn-floating btn-small waves-effect waves-light teal lighten-1" href="@Url.Action("Edit",  new { id = watch.Id })"><i class="material-icons">edit</i></a>
+                    </td>
+                    <td>
+                        <a class="btn-manage btn-floating btn-small waves-effect waves-light red accent-4" href="@Url.Action("Edit",  new { id = watch.Id })"><i class="material-icons">delete</i></a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</div>
+

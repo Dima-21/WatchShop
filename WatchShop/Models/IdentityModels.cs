@@ -29,5 +29,7 @@ namespace WatchShop.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<BLL.Models.WatchDTO> WatchDTOes { get; set; }
     }
 }

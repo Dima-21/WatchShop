@@ -1,34 +1,74 @@
-﻿@{
+﻿@using WatchShop.Models
+@model AddGoodViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div>
-    <table>
+
+    <table class="striped">
         <thead>
-        @*<th>Manufacturer</th>
-        <th>Country</th>*@
-            <th>Watch</th>
+            <tr>
+                <th>Id</th>
+                <th>Model</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Weight</th>
+                <th>FolderImg</th>
+                <th>Manufacturer</th>
+                <th>Style</th>
+                <th>Country</th>
+                <th>Type</th>
+                <th>Glass</th>
+                <th>Material</th>
+            </tr>
         </thead>
         <tbody>
-            @*<tr>
-                @foreach (var manuf in ViewBag.ManufList)
-                {
-                    <td>@manuf.Name</td>
-                }
-            </tr>
-            <tr>
-                @foreach (var country in ViewBag.Countries)
-                {
-                    <td>@country.Name</td>
-                }
-            </tr>*@
-            <tr>
-                @foreach (var watch in ViewBag.Watch)
-                {
+            @foreach (var watch in ViewBag.Watch)
+            {
+                <tr>
+                    <td>@watch.Id</td>
                     <td>@watch.Model</td>
+                    <td>@watch.Price</td>
+                    <td>@watch.Description</td>
+                    <td>@watch.Weight</td>
+                    <td><img src='@watch.Img' width="50px" /></td>
                     <td>@watch.Manufacturer</td>
-                }
-            </tr>
+                    <td>@watch.Style</td>
+                    <td>@watch.Country</td>
+                    <td>@watch.WType</td>
+                    <td>@watch.Glass</td>
+                    <td>@watch.Material</td>
+
+                </tr>
+            }
+
         </tbody>
     </table>
+    @using (Html.BeginForm("AddGood", "Home", FormMethod.Post))
+    {
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>File</span>
+
+                        @Html.TextBoxFor(e => e.ImgPath, htmlAttributes: new { type = "file", multiple = "true" })
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Добавить" class="btn btn-default" />
+
+            </div>
+
+        </div>
+    }
+
+
 </div>
