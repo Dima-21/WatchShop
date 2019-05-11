@@ -34,7 +34,7 @@ namespace BLL.Services
 
         public IEnumerable<MaterialDTO> GetAll()
         {
-            Mapper.Initialize(cfg => cfg.CreateMap<Material, MaterialDTO>());
+            
             var materials = Mapper.Map<IEnumerable<Material>, IEnumerable<MaterialDTO>>(repo.GetAll());
             return materials;
         }

@@ -34,7 +34,6 @@ namespace BLL.Services
 
         public IEnumerable<GlassDTO> GetAll()
         {
-            Mapper.Initialize(cfg => cfg.CreateMap<Glass, GlassDTO>());
             var glasses = Mapper.Map<IEnumerable<Glass>, IEnumerable<GlassDTO>>(repo.GetAll());
             return glasses;
         }

@@ -24,3 +24,35 @@
 }
 
 
+#filter h5 {
+    text-align: center;
+}
+
+
+#filter{
+    min-width: 200px;
+    margin-top:10px;
+    /*border-right: 2px solid grey;*/
+
+}
+
+.opt-list{
+    padding:10px !important;
+}
+
+.drop-sort{
+    width:20%;
+    min-width:min-content;
+    margin:8px;
+   
+}
+
+.sort-block{
+    padding: 0px !important;
+    margin:2px 0;
+    background-color:aliceblue;
+}
+
+#goods-catalog{
+    padding:0 !important;
+}

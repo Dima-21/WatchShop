@@ -68,9 +68,8 @@ namespace BLL.Models
         [Display(Name = "Материал")]
         public string Material { get; set; }
 
-
         [Display(Name = "Фото")]
-        //[MaxLength(10, ErrorMessage = "Максимальное количество картинок - 10")]
-        public string Img { get; set; }
+        public ImgInfo Img { get; set; }
+
     }
 }

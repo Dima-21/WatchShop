@@ -5,70 +5,60 @@
 }
 
 <div>
+    <div class="row">
+        <div class="col s3">
+            <div id="filter">
+                <h5>Фильтр</h5>
+                <hr />
+                <ul class="collapsible expandable">
+                    <li>
+                        <div class="collapsible-header">Модель</div>
+                        <div class="opt-list collapsible-body">
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in" />
+                                    <span>CASIO</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in" />
+                                    <span>ORIENT</span>
+                                </label>
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">Механизм</div>
+                        <div class="collapsible-body"><span></span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">Цена</div>
+                        <div class="collapsible-body">
+                            <label class="col-md-2 control-label">От</label>
+                            <input type="text" class="price-box"/>
+                            <label class="col-md-2 control-label" >До</label>
+                            <input type="text" class="price-box"/>
+                        </div>
+                    </li>
+                </ul>
 
-    <table class="striped">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Model</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>Weight</th>
-                <th>FolderImg</th>
-                <th>Manufacturer</th>
-                <th>Style</th>
-                <th>Country</th>
-                <th>Type</th>
-                <th>Glass</th>
-                <th>Material</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var watch in ViewBag.Watch)
-            {
-                <tr>
-                    <td>@watch.Id</td>
-                    <td>@watch.Model</td>
-                    <td>@watch.Price</td>
-                    <td>@watch.Description</td>
-                    <td>@watch.Weight</td>
-                    <td><img src='@watch.Img' width="50px" /></td>
-                    <td>@watch.Manufacturer</td>
-                    <td>@watch.Style</td>
-                    <td>@watch.Country</td>
-                    <td>@watch.WType</td>
-                    <td>@watch.Glass</td>
-                    <td>@watch.Material</td>
-
-                </tr>
-            }
-
-        </tbody>
-    </table>
-    @using (Html.BeginForm("AddGood", "Home", FormMethod.Post))
-    {
-        <div class="form-group">
-            <div class="col-md-10">
-                <div class="file-field input-field">
-                    <div class="btn">
-                        <span>File</span>
-
-                        @Html.TextBoxFor(e => e.ImgPath, htmlAttributes: new { type = "file", multiple = "true" })
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
-                    </div>
-                </div>
+                <a class="btn col s12">Фильтровать</a>
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Добавить" class="btn btn-default" />
-
+        <div id="goods-catalog" class="col s9">
+            <div class="sort-block">
+                <a class='dropdown-trigger btn drop-sort' data-target='dropdown2'><i class="material-icons right">arrow_drop_down</i>Сортировка</a>
+                <ul id='dropdown2' class='dropdown-content'>
+                    <li><a href="#!">По умолчанию</a></li>
+                    <li><a href="#!">По цене</a></li>
+                </ul>
             </div>
-
+        
+            <div class="goods-list">
+                
+            </div>
         </div>
-    }
 
-
+    </div>
 </div>

@@ -34,7 +34,7 @@ namespace BLL.Services
 
         public IEnumerable<WTypeDTO> GetAll()
         {
-            Mapper.Initialize(cfg => cfg.CreateMap<Wtype, WTypeDTO>());
+ 
             var types = Mapper.Map<IEnumerable<Wtype>, IEnumerable<WTypeDTO>>(repo.GetAll());
             return types;
         }

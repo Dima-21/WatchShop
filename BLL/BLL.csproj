@@ -107,6 +107,7 @@
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />
     <Compile Include="Models\CountryDTO.cs" />
     <Compile Include="Models\GlassDTO.cs" />
+    <Compile Include="Models\ImgInfo.cs" />
     <Compile Include="Models\ManufacturerDTO.cs" />
     <Compile Include="Models\MaterialDTO.cs" />
     <Compile Include="Models\StyleDTO.cs" />

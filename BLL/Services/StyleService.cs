@@ -34,7 +34,7 @@ namespace BLL.Services
 
         public IEnumerable<StyleDTO> GetAll()
         {
-            Mapper.Initialize(cfg => cfg.CreateMap<Style, StyleDTO>());
+
             var styles = Mapper.Map<IEnumerable<Style>, IEnumerable<StyleDTO>>(repo.GetAll());
             return styles;
         }

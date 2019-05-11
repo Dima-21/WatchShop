@@ -18,24 +18,36 @@ namespace BLL.Services
         {
             this.repo = repo;
         }
-        public void Add(WatchDTO item)
+
+        public void Add(WatchDTO watchDTO)
         {
-            var watch = Mapper.Map<WatchDTO, Watch>(item);
+            var watch = Mapper.Map<WatchDTO, Watch>(watchDTO);
+            watch.Country = null;
+            watch.Glass = null;
+            watch.Manufacturer = null;
+            watch.Material = null;
+            watch.Style = null;
+            watch.Wtype = null;
             repo.Create(watch);
             repo.Save();
-            string folder_name = repo.GetAll().FirstOrDefault(x => x.model == watch.model).id.ToString();
+            string folderName = repo.GetAll().FirstOrDefault(x => x.model == watch.model).id.ToString();
             // Create Folder
-            Directory.CreateDirectory($"../WatchShop/Pictures/{folder_name}");
-            var path_pictures = item.Img.Split(',').ToList();
 
-            watch.folder_img = folder_name;
+            watchDTO.Img.Folder += "\\folderName";
+            //var folder = ($"~/../Pictures/{folderName}");
+
+            Directory.CreateDirectory(watchDTO.Img.Folder);
+
+            watch.folder_img = folderName;
             repo.Update(watch);
             repo.Save();
+            File.WriteAllBytes($@"{watchDTO.Img.Folder}\\main.{watchDTO.Img.TypeImg}", watchDTO.Img.Img);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            repo.Delete(id);
+            repo.Save();
         }
 
         public void Edit(WatchDTO item)
@@ -46,7 +58,7 @@ namespace BLL.Services
         public IEnumerable<WatchDTO> GetAll()
         {
             var watch = Mapper.Map<IEnumerable<Watch>, IEnumerable<WatchDTO>>(repo.GetAll());
-
+            
             return watch;
         }
     }

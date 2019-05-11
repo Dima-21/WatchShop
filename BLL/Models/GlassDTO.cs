@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Models
 {
-    class GlassDTO
+    public class GlassDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }

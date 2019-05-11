@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
+<div class="container">
    
     <h4>Управление товарами</h4>
     <hr />
@@ -44,7 +44,7 @@
                         <a class="btn-manage btn-floating btn-small waves-effect waves-light teal lighten-1" href="@Url.Action("Edit",  new { id = watch.Id })"><i class="material-icons">edit</i></a>
                     </td>
                     <td>
-                        <a class="btn-manage btn-floating btn-small waves-effect waves-light red accent-4" href="@Url.Action("Edit",  new { id = watch.Id })"><i class="material-icons">delete</i></a>
+                        <a class="btn-manage btn-floating btn-small waves-effect waves-light red accent-4" href="@Url.Action("Delete",  new { id = watch.Id })"><i class="material-icons">delete</i></a>
                     </td>
                 </tr>
             }
