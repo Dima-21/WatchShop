@@ -9,10 +9,8 @@ namespace BLL.Models
 {
     public class ImgInfo
     {
-
+        public int Id { get; set; }
         public byte[] Img { get; set; }
-
-        public string Folder { get; set; }
 
         public string TypeImg { get; set; }
     }

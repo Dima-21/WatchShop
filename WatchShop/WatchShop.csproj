@@ -316,6 +316,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\GoodsManage\Index.cshtml" />
     <Content Include="Views\GoodsManage\Create.cshtml" />
+    <Content Include="Views\Home\_FilterPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

@@ -69,7 +69,14 @@ namespace BLL.Models
         public string Material { get; set; }
 
         [Display(Name = "Фото")]
-        public ImgInfo Img { get; set; }
+        public List<ImgInfo> Img { get; set; }
+
+        public string FolderImg { get; set; }
+
+        public WatchDTO()
+        {
+            Img = new List<ImgInfo>();
+        }
 
     }
 }

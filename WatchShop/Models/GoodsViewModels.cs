@@ -71,6 +71,8 @@ namespace WatchShop.Models
         [Required]
         //[MaxLength(10, ErrorMessage = "Максимальное количество фото - 10")]
         [Display(Name = "Фото")]
-        public HttpPostedFileBase Img { get; set; }
+        public HttpPostedFileBase[] Img { get; set; }
+
+  
     }
 }

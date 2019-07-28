@@ -30,6 +30,7 @@ namespace BLL.AutoMapper
                     .ForMember("Style", opt => opt.MapFrom(x => x.Style.name))
                     .ForMember("Manufacturer", opt => opt.MapFrom(x => x.Manufacturer.name))
                     .ForMember("ManufacturerId", opt => opt.MapFrom(x => x.manuf_id)).ReverseMap();
+
             });
         }
     }

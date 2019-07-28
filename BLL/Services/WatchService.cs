@@ -31,17 +31,22 @@ namespace BLL.Services
             repo.Create(watch);
             repo.Save();
             string folderName = repo.GetAll().FirstOrDefault(x => x.model == watch.model).id.ToString();
+
             // Create Folder
+            string fullPath = $"{watchDTO.FolderImg}\\{folderName}";
+            Directory.CreateDirectory(fullPath);
+            //
 
-            watchDTO.Img.Folder += "\\folderName";
-            //var folder = ($"~/../Pictures/{folderName}");
-
-            Directory.CreateDirectory(watchDTO.Img.Folder);
-
-            watch.folder_img = folderName;
+            // Save path in DB
+            string relativePath = $"~\\Pictures\\{folderName}";
+            watch.folder_img = relativePath;
             repo.Update(watch);
             repo.Save();
-            File.WriteAllBytes($@"{watchDTO.Img.Folder}\\main.{watchDTO.Img.TypeImg}", watchDTO.Img.Img);
+            for (int i = 0; i < watchDTO.Img.Count; i++)
+            {
+                    File.WriteAllBytes($@"{fullPath}\\image{i}{watchDTO.Img[i].TypeImg}", watchDTO.Img[i].Img);
+            }
+
         }
 
         public void Delete(int id)
@@ -58,7 +63,7 @@ namespace BLL.Services
         public IEnumerable<WatchDTO> GetAll()
         {
             var watch = Mapper.Map<IEnumerable<Watch>, IEnumerable<WatchDTO>>(repo.GetAll());
-            
+
             return watch;
         }
     }

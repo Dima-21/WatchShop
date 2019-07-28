@@ -49,10 +49,23 @@
 
 .sort-block{
     padding: 0px !important;
-    margin:2px 0;
+    margin:2px 0 0 10px;
     background-color:aliceblue;
 }
 
 #goods-catalog{
     padding:0 !important;
+}
+
+.card{
+    width:300px;
+}
+
+.card-title{
+    color:black !important;
+    position:relative !important;
+}
+
+.card-content{
+    padding: 0 24px 24px 24px !important;
 }

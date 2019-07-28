@@ -3,6 +3,7 @@ using BLL.Models;
 using BLL.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -57,7 +58,7 @@ namespace WatchShop.Controllers
             ViewBag.Materials = new SelectList(materialService.GetAll(), "id", "name");
             ViewBag.Styles = new SelectList(styleService.GetAll(), "id", "name");
             ViewBag.Types = new SelectList(wtypeService.GetAll(), "id", "name");
-            return View();
+            return View(new AddGoodViewModel());
         }
 
         // POST: GoodsManage/Create
@@ -82,31 +83,20 @@ namespace WatchShop.Controllers
             watchDTO.GlassId = watchVM.GlassId;
             watchDTO.ManufacturerId = watchVM.ManufacturerId;
             watchDTO.MaterialId = watchVM.MaterialId;
-         
 
-            // 
-            //item.Img = watchVM.ImgPath[0].InputStream.WriteByte();
-            //foreach (var img in watchVM.Img)
-            //{
-            //    watchDTO.ImgFolder.Add(new ImgInfo());
-            //    watchDTO.ImgFolder.Last().Img = new byte[img.ContentLength];
-            //    img.InputStream.Read(watchDTO.ImgFolder.Last().Img, 0, img.ContentLength);
-            //    watchDTO.ImgFolder.Last().TypeImg = img.FileName.Substring(img.FileName.IndexOf('.'));
-            //}
+            // Images download to watchDTO
+            var folder = Server.MapPath("~/Pictures");
+            watchDTO.FolderImg = folder;
 
-            //foreach (var watch in watchVM.ImgPath)
-            //{
-            //    item.Img
-            //}
+            foreach (var img in watchVM.Img)
+            {
+                ImgInfo imgInfo = new ImgInfo();
+                imgInfo.Img = new byte[img.ContentLength];
+                img.InputStream.Read(imgInfo.Img, 0, img.ContentLength);
+                imgInfo.TypeImg = Path.GetExtension(img.FileName);
+                watchDTO.Img.Add(imgInfo);
+            }
 
-           var folder = Server.MapPath("~/Pictures");
-            ImgInfo img = new ImgInfo();
-            img.Folder = folder;
-            img.Img = new byte[watchVM.Img.ContentLength];
-            watchVM.Img.InputStream.Read(img.Img, 0, watchVM.Img.ContentLength);
-            img.TypeImg = watchVM.Img.FileName.Substring(watchVM.Img.FileName.IndexOf('.'));
-
-            watchDTO.Img = img;
             watchService.Add(watchDTO);
 
             return RedirectToAction("Index");
@@ -143,7 +133,38 @@ namespace WatchShop.Controllers
             return RedirectToAction("Index");
         }
 
+        public string GetImage(int id)
+        {
+            string image;
+            string path = Server.MapPath($"~\\Pictures\\{id}");
+            bool isDirectory = System.IO.Directory.Exists(path);
+            if (isDirectory)
+            {
+                image = Directory.EnumerateFiles(path).FirstOrDefault();
+                path = $"Pictures/{id}/{Path.GetFileName(image)}";
+            }
+            else
+                return null;
+
+            return path;
+        }
+
+        public FileContentResult GetImages(params HttpPostedFileBase[] image)
+        {
+            byte[] img;
+            if (image != null)
+            {
+                img = new byte[image[0].ContentLength];
+                image[0].InputStream.Read(img, 0, image[0].ContentLength);
+            }
+            else
+                return null;
+         
+            return File(img,image[0].ContentType);
+        }
+
+
         // POST: GoodsManage/Delete/5
-     
+
     }
 }

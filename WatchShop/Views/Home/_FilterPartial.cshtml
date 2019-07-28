@@ -1,0 +1,43 @@
+﻿@using WatchShop.Models
+
+
+<div class="col s3">
+    <div id="filter">
+        <h5>Фильтр</h5>
+        <hr />
+        <ul class="collapsible expandable">
+            <li>
+                <div class="collapsible-header">Модель</div>
+                <div class="opt-list collapsible-body">
+                    <p>
+                        <label>
+                            <input type="checkbox" class="filled-in" checked="checked"/>
+                            <span>CASIO</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="checkbox" class="filled-in" />
+                            <span>ORIENT</span>
+                        </label>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header">Механизм</div>
+                <div class="collapsible-body"><span></span></div>
+            </li>
+            <li>
+                <div class="collapsible-header">Цена</div>
+                <div class="collapsible-body">
+                    <label class="col-md-2 control-label">От</label>
+                    <input type="text" class="price-box" />
+                    <label class="col-md-2 control-label">До</label>
+                    <input type="text" class="price-box" />
+                </div>
+            </li>
+        </ul>
+
+        <a class="btn col s12">Фильтровать</a>
+    </div>
+</div>
